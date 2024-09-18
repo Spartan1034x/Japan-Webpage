@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous" />
+
+		<link rel="stylesheet" href="styles.css" />
+
+		<style>
+			.title {
+				font-family: myFont;
+				color: #030200;
+			}
+			.card {
+				background-color: #c6831b;
+				color: #030200;
+			}
+			@media screen and (max-width: 575px) {
+				.title {
+					font-size: 1.5em;
+				}
+				.headerTitle {
+					font-size: 3em;
+				}
+
+				.navbarBottom {
+					font-size: 0.8em;
+				}
+			}
+
+			@media screen and (max-width: 768px) and (min-width: 576px) {
+				.title {
+					font-size: 2.25em;
+				}
+
+				.headerTitle {
+					font-size: 4em;
+				}
+			}
+
+			@media screen and (min-width: 769px) and (max-width: 991px) {
+				.title {
+					font-size: 2.55em;
+				}
+
+				.headerTitle {
+					font-size: 4.75em;
+				}
+			}
+
+			@media screen and (min-width: 992px) {
+				.title {
+					font-size: 2.55em;
+				}
+
+				.headerTitle {
+					font-size: 5.5em;
+				}
+
+				.navbarBottom {
+					font-size: 1.25rem;
+				}
+			}
+		</style>
+
+		<title>Japan</title>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="container-fluid text-center header">
+			<div class="row align-items-center">
+				<div class="col-2 col-lg-1 text-center">
+					<img
+						src="./indexpics/flag.webp"
+						alt="Flag of Japan"
+						class="mx-auto d-block img-fluid" />
+				</div>
+				<div class="col-8 col-lg-10 text-container">
+					<h1
+						class="headerTitle d-flex align-items-center justify-content-center">
+						Japan
+					</h1>
+				</div>
+				<div class="col-2 col-lg-1 text-center">
+					<img
+						src="./indexpics/header2-removebg-preview.png"
+						alt="Japan Symbol"
+						class="mx-auto d-block img-fluid" />
+				</div>
+			</div>
+		</div>
+
+		<!-- Adaptive Navbar -->
+		<nav class="navbar navbar-expand-sm navbar-light">
+			<div class="container">
+				<a class="navbar-brand" href="#">Japan - Home</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarNav"
+					aria-controls="navbarNav"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="culture.html">Culture</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="economy.html">Economy</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="history.html">History</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="locations.html">Locations</a>
+						</li>
+						<li class="nav-item dropdown">
+							<button
+								class="btn dropdown-toggle nav-item-dropdown"
+								data-bs-toggle="dropdown"
+								aria-expanded="false">
+								Additional Information
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										class="dropdown-item nav-item-dropdown"
+										href="https://en.wikipedia.org/wiki/Japan"
+										>Japan Wikipedia</a
+									>
+								</li>
+								<li>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										class="dropdown-item nav-item-dropdown"
+										href="https://www.britannica.com/place/Japan"
+										>Britannica Japan</a
+									>
+								</li>
+								<li>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										class="dropdown-item nav-item-dropdown"
+										href="https://www.japan.travel/en/ca/"
+										>Official Japan Tourism Website</a
+									>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"></script>
+
+		<!-- Body Title -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col title text-decoration-underline text-center mt-4">
+					A taste of Japan
+				</div>
+			</div>
+		</div>
+
+		<!-- Slideshow -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="container-fluid m-lg-3">
+						<div class="row d-flex justify-content-center align-items-center">
+							<div class="col-10 justify-content-center">
+								<div
+									class="slideshow d-flex justify-content-center align-items-center border border-3 rounded border-secondary">
+									<img class="mySlides img-fluid" src="./indexpics/city.jpg" />
+									<img
+										class="mySlides img-fluid"
+										src="./indexpics/fashion.jpg" />
+									<img class="mySlides img-fluid" src="./indexpics/food.jpg" />
+									<img
+										class="mySlides img-fluid"
+										src="./indexpics/hills.webp" />
+									<img
+										class="mySlides img-fluid"
+										src="./indexpics/Mountain.jpg" />
+									<img
+										class="mySlides img-fluid"
+										src="./indexpics/mountain2.jpg" />
+									<img class="mySlides img-fluid" src="./indexpics/flag.webp" />
+								</div>
+
+								<script>
+									var myIndex = 0;
+									carousel();
+
+									function carousel() {
+										var i;
+										var x = document.getElementsByClassName("mySlides");
+										for (i = 0; i < x.length; i++) {
+											x[i].style.display = "none";
+										}
+										myIndex++;
+										if (myIndex > x.length) {
+											myIndex = 1;
+										}
+										x[myIndex - 1].style.display = "block";
+										setTimeout(carousel, 3500); // Changes img, 3500 = 3.5 seconds
+									}
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Cards -->
+				<div class="col-lg-6">
+					<div class="container-fluid mt-4 mb-4 m-lg-3">
+						<div class="row d-flex justify-content-center align-items-center">
+							<div class="col-8">
+								<div id="carouselExample" class="carousel slide">
+									<div class="carousel-inner">
+										<div class="card carousel-item active">
+											<img
+												src="./indexpics/culture.jpg"
+												class="card-img-top"
+												alt="two dancing girls" />
+											<div class="card-body">
+												<h5 class="card-title text-center">Japanese Culture</h5>
+												<p class="card-text">
+													Visit our Japanese culture page to dive into the
+													historic and current culture.
+												</p>
+												<a href="culture.html" class="btn btn-primary"
+													>Culture Page</a
+												>
+											</div>
+										</div>
+										<div class="card carousel-item">
+											<img
+												src="./indexpics/economy.jpg"
+												class="card-img-top"
+												alt="Japan currency" />
+											<div class="card-body">
+												<h5 class="card-title text-center">Economy</h5>
+												<p class="card-text">
+													View information on Japan's busy economy, Centered in
+													it's main city of Kyoto!
+												</p>
+												<a href="economy.html" class="btn btn-primary"
+													>Economy Page</a
+												>
+											</div>
+										</div>
+										<div class="card carousel-item">
+											<img
+												src="./indexpics/history.jpg"
+												class="card-img-top"
+												alt="Shogun family" />
+											<div class="card-body">
+												<h5 class="card-title text-center">Japan History</h5>
+												<p class="card-text">
+													Japan is a country rich in history, visit this page to
+													delve deep into the history books.
+												</p>
+												<a href="history.html" class="btn btn-primary"
+													>History Page</a
+												>
+											</div>
+										</div>
+										<div class="card carousel-item">
+											<img
+												src="./indexpics/locations.jpg"
+												class="card-img-top"
+												alt="Japan temple" />
+											<div class="card-body">
+												<h5 class="card-title text-center">
+													Notable Locations
+												</h5>
+												<p class="card-text">
+													Japan is a country rich in scenery, visit this page to
+													be in awe of natures beauty.
+												</p>
+												<a href="locations.html" class="btn btn-primary"
+													>Locations Page</a
+												>
+											</div>
+										</div>
+										<button
+											class="carousel-control-prev"
+											type="button"
+											data-bs-target="#carouselExample"
+											data-bs-slide="prev">
+											<span
+												class="carousel-control-prev-icon"
+												aria-hidden="true"></span>
+											<span class="visually-hidden">Previous</span>
+										</button>
+										<button
+											class="carousel-control-next"
+											type="button"
+											data-bs-target="#carouselExample"
+											data-bs-slide="next">
+											<span
+												class="carousel-control-next-icon"
+												aria-hidden="true"></span>
+											<span class="visually-hidden">Next</span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Navbar bottom -->
+			<div class="row d-md-none d-sm-none d-none d-lg-block mt-4">
+				<div class="col">
+					<ul class="nav justify-content-center navbarBottom bg-light">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="index.html"
+								>Home</a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="culture.html">Culture</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="economy.html">Economy</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="history.html">History</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="locations.html">Locations</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

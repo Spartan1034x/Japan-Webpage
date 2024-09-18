@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous" />
+		<link rel="stylesheet" href="styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+			integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+			crossorigin="" />
+
+		<title>Japan - Locations</title>
+		<style>
+			@media screen and (max-width: 576px) {
+				.headerTitle {
+					font-size: 3em;
+				}
+
+				.mapTitle {
+					font-size: 1.5rem;
+				}
+
+				#map {
+					width: 80%;
+					height: 400px;
+				}
+			}
+
+			@media screen and (max-width: 768px) and (min-width: 577px) {
+				.headerTitle {
+					font-size: 4em;
+				}
+
+				.mapTitle {
+					font-size: 2.5rem;
+				}
+				#map {
+					width: 80%;
+					height: 450px;
+				}
+			}
+
+			@media screen and (min-width: 769px) {
+				.headerTitle {
+					font-size: 4.75em;
+				}
+
+				.mapTitle {
+					font-size: 3rem;
+				}
+
+				#map {
+					width: 80%;
+					height: 500px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="container-fluid text-center header">
+			<div class="row align-items-center">
+				<div class="col-2 col-lg-1 text-center">
+					<img
+						src="./indexpics/flag.webp"
+						alt="Flag of Japan"
+						class="mx-auto d-block img-fluid" />
+				</div>
+				<div class="col-8 col-lg-10 text-container">
+					<h1
+						class="headerTitle d-flex align-items-center justify-content-center">
+						Japan
+					</h1>
+				</div>
+				<div class="col-2 col-lg-1 text-center">
+					<img
+						src="./indexpics/header2-removebg-preview.png"
+						alt="Japan Symbol"
+						class="mx-auto d-block img-fluid" />
+				</div>
+			</div>
+		</div>
+
+		<!-- Adaptive Navbar -->
+		<nav class="navbar navbar-expand-sm navbar-light">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">Japan - Home</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarNav"
+					aria-controls="navbarNav"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="culture.html">Culture</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="economy.html">Economy</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="history.html">History</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="locations.html">Locations</a>
+						</li>
+						<li class="nav-item dropdown">
+							<button
+								class="btn dropdown-toggle nav-item-dropdown"
+								data-bs-toggle="dropdown"
+								aria-expanded="false">
+								Additional Information
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										class="dropdown-item nav-item-dropdown"
+										href="https://en.wikipedia.org/wiki/Japan"
+										>Japan Wikipedia</a
+									>
+								</li>
+								<li>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										class="dropdown-item nav-item-dropdown"
+										href="https://www.britannica.com/place/Japan"
+										>Britannica Japan</a
+									>
+								</li>
+								<li>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										class="dropdown-item nav-item-dropdown"
+										href="https://www.japan.travel/en/ca/"
+										>Official Japan Tourism Website</a
+									>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"></script>
+
+		<!-- Page Content -->
+
+		<div class="container-fluid">
+			<!-- Map -->
+			<div class="row">
+				<div class="container-fluid">
+					<div
+						class="row d-flex justify-content-center align-items-center m-3 mapTitle">
+						Interactive Japan Map
+					</div>
+					<div class="row">
+						<div class="col d-flex justify-content-center align-items-center">
+							<div id="map" class="border border-black border-3"></div>
+							<script
+								src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+								integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+								crossorigin=""></script>
+							<script>
+								const map = L.map("map", { scrollWheelZoom: false }).setView(
+									[36.2, 138.2],
+									4.5
+								);
+								L.tileLayer(
+									"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+									{
+										attribution:
+											'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+									}
+								).addTo(map);
+
+								const marker1 = L.marker([35.681631, 139.775482])
+									.bindPopup("Tokyo City")
+									.addTo(map);
+								const marker2 = L.marker([38.234944, 140.887004])
+									.bindPopup("Nagoya City")
+									.addTo(map);
+								const marker3 = L.marker([34.66597, 135.544304])
+									.bindPopup("Osaka City")
+									.addTo(map);
+								const marker4 = L.marker([35.1884, 136.940646])
+									.bindPopup("Sendai City")
+									.addTo(map);
+								const marker5 = L.marker([43.081928, 141.358206])
+									.bindPopup("Sapporo City")
+									.addTo(map);
+								const marker6 = L.marker([35.361511, 138.730398])
+									.bindPopup("Mount Fuji")
+									.addTo(map);
+								const marker7 = L.marker([32.777172, 130.74186])
+									.bindPopup("Kumamoto City")
+									.addTo(map);
+								const marker8 = L.marker([34.395154, 132.456241])
+									.bindPopup("Hiroshima City")
+									.addTo(map);
+
+								const basemaps = {
+									StreetView: L.tileLayer(
+										"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+										{
+											attribution:
+												'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+										}
+									),
+									Topography: L.tileLayer.wms(
+										"http://ows.mundialis.de/services/service?",
+										{ layers: "TOPO-WMS" }
+									),
+									Places: L.tileLayer.wms(
+										"http://ows.mundialis.de/services/service?",
+										{ layers: "OSM-Overlay-WMS" }
+									),
+								};
+
+								L.control.layers(basemaps).addTo(map);
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mt-4 gx-0">
+				<!-- Accordion -->
+				<div
+					class="col-md-6 order-md-1 d-flex justify-content-center align-items-center">
+					<div class="accordion" id="accordionExample">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button
+									class="accordion-button"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseOne"
+									aria-expanded="true"
+									aria-controls="collapseOne">
+									Mount Fuji
+								</button>
+							</h2>
+							<div
+								id="collapseOne"
+								class="accordion-collapse collapse show"
+								data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									Mount Fuji (富士山, Fujisan) is with 3776 meters Japan's
+									highest mountain. It is not surprising that the nearly
+									perfectly shaped volcano has been worshiped as a sacred
+									mountain and experienced big popularity among artists and
+									common people throughout the centuries. Mount Fuji is an
+									active volcano, which most recently erupted in 1707. It stands
+									on the border between Yamanashi and Shizuoka prefectures and
+									can be seen from Tokyo and Yokohama on clear days.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button
+									class="accordion-button collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseTwo"
+									aria-expanded="false"
+									aria-controls="collapseTwo">
+									Kyoto City
+								</button>
+							</h2>
+							<div
+								id="collapseTwo"
+								class="accordion-collapse collapse"
+								data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									Kyoto (京都, Kyōto) served as Japan's capital and the
+									emperor's residence from 794 until 1868. It is one of the
+									country's ten largest cities with 1.5 million inhabitants and
+									a modern face. Over the centuries, Kyoto was destroyed by many
+									wars and fires, but due to its exceptional historic value, the
+									city was dropped from the list of target cities for the atomic
+									bomb and escaped destruction during World War II. Countless
+									temples, shrines and other historically priceless structures
+									survive in the city today.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button
+									class="accordion-button collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseThree"
+									aria-expanded="false"
+									aria-controls="collapseThree">
+									Abashiri Quasi-National Park
+								</button>
+							</h2>
+							<div
+								id="collapseThree"
+								class="accordion-collapse collapse"
+								data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									Abashiri Quasi-National Park (網走国定公園, Abashiri Kokutei
+									Kōen) is a quasi-national park in Japan. The park protects the
+									waters and surrounding coastline of the lakes and lagoons
+									along the Sea of Okhotsk on Hokkaidō. This includes such lakes
+									as Lake Abashiri and Lake Notoro as well as Lake Tōfutsu and
+									Lake Saroma. Lake Saroma is the fourth largest lake in Japan.
+									Most of the park lies within the limits of Abashiri in
+									Abashiri Subprefecture of northeastern Hokkaidō.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button
+									class="accordion-button collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseFour"
+									aria-expanded="false"
+									aria-controls="collapseFour">
+									Rivers of Japan
+								</button>
+							</h2>
+							<div
+								id="collapseFour"
+								class="accordion-collapse collapse"
+								data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									Rivers of Japan are characterized by their relatively short
+									lengths and considerably steep gradients due to the narrow and
+									mountainous topography of the country. An often-cited quote is
+									'this is not a river, but a waterfall' by the Dutch engineer
+									(o-yatoi gaikokujin) Johannis de Rijke who had visited the
+									Jōganji River, Toyama Prefecture. The Mogami, the Fuji and the
+									Kuma are regarded as the three most rapid rivers of Japan.
+									Typical rivers of Japan rise from mountainous forests and cut
+									out deep V-shaped valleys in their upper reaches, and form
+									alluvial plains in their lower reaches which enable the
+									Japanese to cultivate rice fields and to set up cities. Most
+									rivers are dammed to supply both water and electricity.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button
+									class="accordion-button collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseFive"
+									aria-expanded="false"
+									aria-controls="collapseFive">
+									Borders of Japan
+								</button>
+							</h2>
+							<div
+								id="collapseFive"
+								class="accordion-collapse collapse"
+								data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									Japan is an island nation located in the Northern and Eastern
+									hemispheres of the Earth. It stretches from the Sea of Okhotsk
+									in the north to the East China Sea in the south, and is
+									bordered by the Sea of Japan in the west. Japan does not share
+									a land border with any countries, but it shares maritime
+									borders with North Korea, South Korea, Philippines, Taiwan,
+									Russia, and China.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Video -->
+				<div
+					class="col-md-6 order-md-2 d-flex justify-content-center align-items-center d-none d-sm-flex">
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/UmSEUeTw5GA?autoplay=1&mute=1"
+						title="YouTube video player"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+			</div>
+
+			<!-- Navbar bottom -->
+			<div class="row d-md-none d-sm-none d-none d-lg-block mt-4">
+				<div class="col">
+					<ul class="nav justify-content-center navbarBottom bg-light">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="index.html"
+								>Home</a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="culture.html">Culture</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="economy.html">Economy</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="history.html">History</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="locations.html">Locations</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
